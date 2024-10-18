@@ -25,7 +25,7 @@ pub fn create(b: *std.Build, target: std.Build.ResolvedTarget, optimize: std.bui
     lib.defineCMacro("CURL_STATICLIB", "1");
     lib.defineCMacro("CURL_DISABLE_LDAP", "1");
     lib.defineCMacro("CURL_DISABLE_LDAPS", "1");
-    lib.defineCMacro("USE_MBEDTLS", "1");
+    lib.defineCMacro("USE_OPENSSL", "1");
     lib.defineCMacro("CURL_DISABLE_DICT", "1");
     lib.defineCMacro("CURL_DISABLE_FILE", "1");
     lib.defineCMacro("CURL_DISABLE_FTP", "1");

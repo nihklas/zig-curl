@@ -70,15 +70,19 @@ fn buildLibcurl(
     optimize: std.builtin.OptimizeMode,
 ) ?*Step.Compile {
     const curl = @import("libs/curl.zig").create(b, target, optimize);
-    const tls = @import("libs/mbedtls.zig").create(b, target, optimize);
     const zlib = @import("libs/zlib.zig").create(b, target, optimize);
-    if (curl == null or tls == null or zlib == null) {
+    const libressl_dependency = b.lazyDependency("libressl", .{
+        .target = target,
+        .optimize = optimize,
+        .@"enable-asm" = true, // enable assembly routines on supported platforms
+    });
+    if (curl == null or zlib == null or libressl_dependency == null) {
         return null;
     }
 
     const libcurl = curl.?;
-    libcurl.linkLibrary(tls.?);
     libcurl.linkLibrary(zlib.?);
+    libcurl.linkLibrary(libressl_dependency.?.artifact("tls"));
     return libcurl;
 }
 
