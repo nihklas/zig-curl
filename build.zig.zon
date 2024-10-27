@@ -12,7 +12,7 @@
         .curl = .{
             // https://github.com/curl/curl/releases/tag/curl-8_8_0
             .url = "https://github.com/curl/curl/releases/download/curl-8_10_1/curl-8.10.1.tar.gz",
-            .hash = "12207d52e2cf89a5750ad273648c6f4cdeb5b4c19d171f0b1a3215cf592ca677fd94",
+            .hash = "1220d541f2c094ef8ae16d3bc978671cfd3f121ae82a082abe58bae81f7d0ff5487a",
             .lazy = true,
         },
         // https://github.com/madler/zlib/releases/tag/v1.3.1
